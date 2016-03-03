@@ -11,7 +11,7 @@ namespace PigDice
         static Random rnd = new Random();
         static void Main(string[] args)
         {
-            int numOfRolls = 0;
+            int TotalRolls = 0;
             int totalScore = 0;
             
             //create title
@@ -21,26 +21,31 @@ namespace PigDice
 
             // Console.Clear();
             bool keepPlaying = true;
-
-            while (keepPlaying)
+            while (totalScore < 100)
             {
-                int diceNum = rnd.Next(1, 7);
-                Console.WriteLine($"you have rolled {diceNum}");
-                Console.ReadLine();
-
-                if (diceNum == 1)// if 1 is rolled the game stops 
+                while (keepPlaying)
                 {
-                    Console.WriteLine("you lost");
-                    break;
-                }
-                else
-                {
-                    numOfRolls = numOfRolls + diceNum;
-                    Console.WriteLine($"press enter to keep rolling and your score is {totalScore}");
+                    int diceNum = rnd.Next(1, 7);
+                    Console.WriteLine($"you have rolled {diceNum}");
                     Console.ReadLine();
+
+                    if (diceNum == 1)// if 1 is rolled the game stops 
+                    {
+                        TotalRolls = 0;
+                        Console.WriteLine("you lost");
+                        break;
+                    }
+                    totalScore += TotalRolls;
+                    Console.WriteLine($"Your turn total score is {TotalRolls}. you game total is {totalScore}");
+                    if (totalScore > 100)
+                    {
+                        TotalRolls += diceNum;
+                        Console.WriteLine($"press enter to keep rolling and your score is {totalScore}");
+                        Console.ReadLine();
+                    }
                 }
+                
             }
-            totalScore = numOfRolls;
         }
     }
 
