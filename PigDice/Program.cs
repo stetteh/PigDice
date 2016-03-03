@@ -39,6 +39,7 @@ namespace PigDice
                     Console.ReadLine();
                 }
             }
+            totalScore = numOfRolls;
         }
     }
 
