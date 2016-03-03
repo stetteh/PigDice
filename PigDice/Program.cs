@@ -35,7 +35,8 @@ namespace PigDice
                 }
                 else
                 {
-                    Console.WriteLine("press enter to keep rolling");
+                    numOfRolls = numOfRolls + diceNum;
+                    Console.WriteLine($"press enter to keep rolling and your score is {totalScore}");
                     Console.ReadLine();
                 }
             }
